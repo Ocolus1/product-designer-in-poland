@@ -1,57 +1,55 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from 'react';
 
 function Newsletter() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [success, setSuccess] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [message, setMessage] = useState('');
+	const [success, setSuccess] = useState('');
+	const [error, setError] = useState('');
+	const [loading, setLoading] = useState(false);
 
+	const handleSubmit = () => {
+		setLoading(true);
+		setSuccess('');
+		setLoading('');
 
-  const handleSubmit = () => {
+		if (!name && !email && !message) {
+			setError('All fields are required');
+			return;
+		}
 
-    setLoading(true);
-    setSuccess("");
-    setLoading('');
+		let data = {
+			name: name,
+			email: email,
+			message: message,
+		};
 
-    if (!name && !email && !message){
-      setError('All fields are required');
-      return 
-    }
+		fetch('https://submit-form.com/2KaifsAAB', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+			.then(function (response) {
+				if (response.ok) {
+					setSuccess('Form submitted successfully');
+				} else {
+					setError('Network response was not ok. Please try again.');
+				}
+			})
+			.catch(function (error) {
+				alert(
+					'There was a problem submitting your form. Please try again.'
+				);
+				console.error('Error:', error);
+			});
 
-    let data = {
-      name: name,
-      email: email,
-      message: message
-    }
+		setLoading(false);
+	};
 
-    fetch('https://submit-form.com/2KaifsAAB', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(function (response) {
-        if (response.ok) {
-          setSuccess("Form submitted successfully")
-        } else {
-          setError('Network response was not ok. Please try again.');
-        }
-      })
-      .catch(function (error) {
-        alert(
-          'There was a problem submitting your form. Please try again.'
-        );
-        console.error('Error:', error);
-      });
-
-      setLoading(false);
-    }
-
-  return (
+	return (
 		<section className="cta__section max-w-4xl mx-auto py-24 px-5 lg:px-0">
 			<div
 				className=" bg-white p-10 rounded-2xl
@@ -65,14 +63,14 @@ function Newsletter() {
 					Don&apos;t Wait till it&apos;s urgent. Contact Us Now!
 				</h3>
 				<div className="input-form max-w-2xl mx-auto w-full gap-y-2 items-center justify-center lg:justify-start gap-x-1 lg:gap-x-5 mt-7">
-					<div className="flex my-5 gap-x-1 lg:gap-x-5">
+					<div className="lg:flex my-5 gap-x-1 lg:gap-x-5">
 						<div className="w-full">
 							<input
 								type="text"
 								placeholder="Name *"
 								value={name}
 								onChange={(e) => setName(e.target.value)}
-								className="py-2 px-5 lg:py-3 bg-[#fcfcfc] placeholder:text-sm  placeholder:text-black/50 rounded-lg w-full focus:outline-none ring-1 ring-[#0A071B] focus:ring-2 focus:ring-[#0A071B]"
+								className="py-2 px-5 mb-5 lg:py-3 bg-[#fcfcfc] placeholder:text-sm  placeholder:text-black/50 rounded-lg w-full focus:outline-none ring-1 ring-[#0A071B] focus:ring-2 focus:ring-[#0A071B]"
 								required
 							/>
 						</div>
@@ -105,7 +103,7 @@ function Newsletter() {
 				</div>
 			</div>
 		</section>
-  );
+	);
 }
 
 export default Newsletter;

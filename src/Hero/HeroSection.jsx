@@ -35,18 +35,17 @@ function HeroSection() {
 					</div>
 				</div>
 			</div>
-			<div className="max-w-lg mx-auto w-full flex items-center justify-center lg:justify-start gap-x-1 lg:gap-x-8">
-				<img src="/multi.png" width="50%" alt="" />
+			<div className="max-w-lg mx-auto w-full flex items-center justify-center px-8 lg:px-4 lg:justify-start gap-x-1 lg:gap-x-8">
+				<img src="/multi.png" width="50%" alt="" className="hidden lg:flex" />
 				<p>
 					<span className="font-semibold">More than 100+</span> users
 					are selling their products online with simple & easy ways
 				</p>
 			</div>
-			<div className="bg-gradient-to-r from-blue-600 to-red-300 flex items-center justify-center gap-5 p-10 max-w-6xl mt-14 mx-auto rounded-none lg:rounded-2xl overflow-hidden">
+			<div className="bg-gradient-to-r from-blue-600 to-red-300 flex flex-col sm:flex-row items-center justify-center gap-5 p-10 max-w-6xl mt-14 mx-auto rounded-none lg:rounded-2xl overflow-hidden">
 				<img src={heroImage1} alt="" />
 				<img src={heroImage2} alt="" />
 				<img src={heroImage3} alt="" />
-				di
 			</div>
 		</div>
 	);
