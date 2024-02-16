@@ -24,7 +24,7 @@ function Navbar() {
 						<div className="header-logo flex items-center space-x-2">
 							<img src="/logo.png" alt="" />
 							<h2 className="text-white font-bold text-base">
-								ProductDesignerInEurope
+								ProductDesignerInPoland
 							</h2>
 						</div>
 					</button>
